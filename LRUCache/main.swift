@@ -59,7 +59,6 @@ struct Tests {
         cache.getAndPrint(2)         // returns 6
     }
     
-    
     /*
      Input
         ["LRUCache","put","put","get"]

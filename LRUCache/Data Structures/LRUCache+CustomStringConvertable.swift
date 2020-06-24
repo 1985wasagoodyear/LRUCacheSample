@@ -16,10 +16,6 @@ extension LRUCache: CustomStringConvertible where Key: CustomStringConvertible, 
     }
     
     public func getAndPrint(_ key: Key) {
-        if let value = get(key) {
-            print(value)
-        } else {
-            print("nil")
-        }
+        print(get(key)?.description ?? "nil")
     }
 }

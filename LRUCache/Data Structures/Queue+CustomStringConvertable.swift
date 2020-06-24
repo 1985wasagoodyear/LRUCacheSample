@@ -13,6 +13,7 @@ import Foundation
 extension Queue: CustomStringConvertible where Key: CustomStringConvertible, Value: CustomStringConvertible {
     public var description: String {
         var nodes: [String] = []
+        nodes.reserveCapacity(size)
         var node = head
         while let value = node?.value {
             let desc = "Key: " + value.0.description
@@ -25,4 +26,5 @@ extension Queue: CustomStringConvertible where Key: CustomStringConvertible, Val
         }
         return nodes.joined(separator: "\n")
     }
+    
 }

@@ -66,5 +66,5 @@ public class Queue<Key, Value> {
         prev?.next = next
         size -= 1
     }
+    
 }
-
