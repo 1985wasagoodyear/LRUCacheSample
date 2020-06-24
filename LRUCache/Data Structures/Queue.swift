@@ -64,6 +64,14 @@ public class Queue<Key, Value> {
         let next = node?.next
         next?.prev = prev
         prev?.next = next
+        // remove if it is the head
+        if head === node {
+            head = nil
+        }
+        // remove if it is the tail
+        if tail === node {
+            tail = node?.prev
+        }
         size -= 1
     }
     

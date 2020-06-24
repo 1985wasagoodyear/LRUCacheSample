@@ -12,6 +12,9 @@ import Foundation
 
 extension Queue: CustomStringConvertible where Key: CustomStringConvertible, Value: CustomStringConvertible {
     public var description: String {
+        guard head != nil else {
+            return "empty"
+        }
         var nodes: [String] = []
         nodes.reserveCapacity(size)
         var node = head
@@ -20,9 +23,6 @@ extension Queue: CustomStringConvertible where Key: CustomStringConvertible, Val
                 + ", Value: " + value.1.description
             nodes.append(desc)
             node = node?.next
-        }
-        if nodes.isEmpty {
-            return "empty"
         }
         return nodes.joined(separator: "\n")
     }
