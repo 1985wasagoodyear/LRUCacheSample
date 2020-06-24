@@ -10,7 +10,15 @@
 
 import Foundation
 
-extension LRUCache: CustomStringConvertible where Key: CustomStringConvertible, Value: CustomStringConvertible {
+extension LRUCache: CustomStringConvertible, CustomDebugStringConvertible where Key: CustomStringConvertible, Value: CustomStringConvertible {
+    public var debugDescription: String {
+        """
+        Capacity: \(size) / \(capacity)
+        Map Contents: \n\(map)
+        Queue Contents: \n\(queue)
+        """
+    }
+    
     public var description: String {
         return queue.description
     }

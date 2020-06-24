@@ -10,23 +10,35 @@
 
 import Foundation
 
+/**
+ 
+ Swift implementation of a Least Recently Used (LRU) Cache.
+ 
+ - Complexity
+    * space: O(n)
+    * get: O(1)
+    * put: O(1)
+ 
+ */
 public class LRUCache<Key: Hashable, Value>{
     
     public typealias CacheNode = ListNode<(Key, Value)>
     
     var capacity: Int
-    var size: Int
+    var size: Int {
+        return queue.size
+    }
     var map: [Key: CacheNode]
     var queue: Queue<Key, Value>
     
     public init(_ capacity: Int) {
         map = [:]
         map.reserveCapacity(capacity)
-        size = 0
         self.capacity = capacity
         queue = Queue(capacity)
     }
     
+    /// can fetch items from the cache in O(1) time
     public func get(_ key: Key) -> Value? {
         // if it exists in the queue,
         // link its neighbours together, then reassign head
@@ -43,6 +55,7 @@ public class LRUCache<Key: Hashable, Value>{
         return nil
     }
     
+    /// can place items into the cache in O(1) time
     public func put(_ key: Key, _ value: Value) {
         let putHead: CacheNode
         // is it in cache?

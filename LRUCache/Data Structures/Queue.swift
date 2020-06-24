@@ -20,6 +20,7 @@ public class Queue<Key, Value> {
     public weak var tail: QueueNode?
     
     public init(_ capacity: Int) {
+        assert(capacity > 0)
         size = 0
         self.capacity = capacity
     }
